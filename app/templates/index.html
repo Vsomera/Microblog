@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% if title %}                           <!-- Conditional statements: if title not defined -->
+        <title> {{ title }} - Microblog</title>     <!-- Passes the arguments from routes.py-->
+        {% else %}
+        <title> Welcome to Mircorblog</title>
+        {% endif %}                             <!-- Ends the if conditionals -->
+    </head>
+
+    <body>
+        <h1>Hello, {{ user.username }}!</h1>    <!-- Passes the arguments from routes.py-->
+        {% for post in posts %}                     <!-- For loops: loops through the passed json argument -->
+        <div>
+            <p>{{post.author.username}} says: <b>{{post.body}}</b></p>
+        </div>
+        {% endfor %}                                    <!-- Ends the for loop -->
+    </body>
+</html>
