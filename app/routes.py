@@ -1,10 +1,11 @@
 from flask import render_template # module for returning html files to the browser
 from app import app
+from app.forms import LoginForm
 
 # the browser will request either 2 of these URL's, flask will invoke the function and pass the return value as a response
 @app.route("/")
-@app.route("/index") # browser will make this request
 
+@app.route("/index") # browser will make this request
 def index():         # returns the string as a response
     user = {'username' : "Vsomera"}
     posts = [
@@ -19,3 +20,8 @@ def index():         # returns the string as a response
     ]
     return render_template('index.html', title='Home', user=user, posts=posts) # passes title and user arguments to html file
 
+
+@app.route("/login")
+def login():
+    form = LoginForm()
+    return render_template('login.html', title='Sign In', form=form)
